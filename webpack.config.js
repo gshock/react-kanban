@@ -49,7 +49,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:5000',
     'webpack/hot/dev-server',
-    __dirname + "/app/App.js"
+    __dirname + "/app/app.js"
   ],
   output: {
     path: __dirname + "/public",

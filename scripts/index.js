@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Hello from './Hello';
+import KanbanBoard from './KanbanBoard';
 
 render(
-  <Hello />,
+  <KanbanBoard />,
   document.getElementById('root')
 );
