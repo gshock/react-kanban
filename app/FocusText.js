@@ -1,0 +1,23 @@
+import React, { Component } from 'react';
+import {render} from 'react-dom';
+
+export default class FocusText extends Component {
+    handleClick() {
+        // Explicitly focus the text input using the raw DOM API.
+        this.refs.myTextInput.focus();
+    }
+    render() {
+        // The ref attribute adds a reference to the component to
+        // this.refs when the component is mounted.
+        return (
+            <div>
+                <input type="text" ref="myTextInput" />
+                <input
+                    type="button"
+                    value="Focus the text input"
+                    onClick={this.handleClick.bind(this) }
+                    />
+            </div>
+        );
+    }
+}
