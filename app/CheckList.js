@@ -17,5 +17,11 @@ class CheckList extends Component {
             </div>
         );
     }
-}
+};
+
+CheckList.propTypes = {
+    cardId: PropTypes.number,
+    tasks: PropTypes.arrayOf(PropTypes.object)
+};
+
 export default CheckList;
