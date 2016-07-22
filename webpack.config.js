@@ -45,32 +45,37 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  devtool: 'eval-source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:5000',
-    'webpack/hot/dev-server',
-    __dirname + "/app/app.js"
-  ],
-  output: {
-    path: __dirname + "/public",
-    filename: 'bundle.js',
-    publicPath: '/static/'
-  },
-  resolve: {
-    extensions: ['', '.js']
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'app')
-      }
-    ]
-  }
+    debug: true,
+    devtool: 'eval-source-map',
+    entry: [
+        'webpack-dev-server/client?http://localhost:5000',
+        'webpack/hot/dev-server',
+        __dirname + "/app/app.js"
+    ],
+    output: {
+        path: __dirname + "/public",
+        filename: 'bundle.js',
+        publicPath: '/static/'
+    },
+    resolve: {
+        extensions: ['', '.js']
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ],
+    module: {
+        loaders: [{
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loaders: ['babel'],
+                include: path.join(__dirname, 'app')
+            },
+            { test: /\.css$/, loader: "style-loader!css-loader" }, 
+            {
+                test: /\.scss$/,
+                loaders: ['style', 'css', 'sass']
+            }
+        ]
+    }
 };
