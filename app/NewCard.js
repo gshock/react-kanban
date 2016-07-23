@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import CardForm from './CardForm'
 
+import 'babel-polyfill';
+
 class NewCard extends Component {
     componentWillMount() {
         this.setState({
@@ -18,10 +20,10 @@ class NewCard extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.cardCallbacks.addCard(this.state);
-        this.props.history.push(null, '/');
+        this.props.history.pushState(null, '/');
     }
     handleClose(e) {
-        this.props.history.push(null, '/');
+        this.props.history.pushState(null, '/');
     }
     render() {
         return (

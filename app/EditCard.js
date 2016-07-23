@@ -1,5 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import CardForm from './CardForm';
+
+import 'babel-polyfill';
+
 class EditCard extends Component {
     componentWillMount() {
         let card = this.props.cards.find((card) => card.id == this.props.params.card_id);
@@ -11,10 +14,10 @@ class EditCard extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.cardCallbacks.updateCard(this.state);
-        this.props.history.push(null, '/');
+        this.props.history.pushState(null, '/');
     }
     handleClose(e) {
-        this.props.history.push(null, '/');
+        this.props.history.pushState(null, '/');
     }
     render() {
         return (
