@@ -5,24 +5,30 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import List from './List';
 
 class KanbanBoard extends Component {
-  render(){
+  render() {
+    let cardModal = this.props.children && React.cloneElement(this.props.children, {
+      cards: this.props.cards,
+      cardCallbacks: this.props.cardCallbacks
+    });
+
     return (
       <div className="app">
         <List id='todo'
-              title="To Do"
-              cards={this.props.cards.filter((card) => card.status === "todo")}
-              cardCallbacks={this.props.cardCallbacks}
-              taskCallbacks={this.props.taskCallbacks} />
+          title="To Do"
+          cards={this.props.cards.filter((card) => card.status === "todo") }
+          cardCallbacks={this.props.cardCallbacks}
+          taskCallbacks={this.props.taskCallbacks} />
         <List id='in-progress'
-              title="In Progress"
-              cards={this.props.cards.filter((card) => card.status === "in-progress")}
-              cardCallbacks={this.props.cardCallbacks}
-              taskCallbacks={this.props.taskCallbacks} />
+          title="In Progress"
+          cards={this.props.cards.filter((card) => card.status === "in-progress") }
+          cardCallbacks={this.props.cardCallbacks}
+          taskCallbacks={this.props.taskCallbacks} />
         <List id='done'
-              title='Done'
-              cards={this.props.cards.filter((card) => card.status === "done")}
-              cardCallbacks={this.props.cardCallbacks}
-              taskCallbacks={this.props.taskCallbacks} />
+          title='Done'
+          cards={this.props.cards.filter((card) => card.status === "done") }
+          cardCallbacks={this.props.cardCallbacks}
+          taskCallbacks={this.props.taskCallbacks} />
+        {cardModal}
       </div>
     );
   }
