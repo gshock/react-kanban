@@ -66,16 +66,25 @@ module.exports = {
     ],
     module: {
         loaders: [{
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loaders: ['babel'],
-                include: path.join(__dirname, 'app')
-            },
-            { test: /\.css$/, loader: "style-loader!css-loader" }, 
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loaders: ['babel'],
+            include: path.join(__dirname, 'app')
+        },
+            { 
+                test: /\.css$/, 
+                loader: "style-loader!css-loader" },
             {
                 test: /\.scss$/,
                 loaders: ['style', 'css', 'sass']
             }
         ]
+    },
+    devServer: {
+        contentBase: "./public",
+        colors: true,
+        historyApiFallback: true,
+        inline: true, 
+        port:5000
     }
 };
