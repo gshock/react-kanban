@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import CardForm from './CardForm'
-
-import 'babel-polyfill';
+import CardForm from './CardForm';
+import CardActionCreators from '../actions/CardActionCreators';
 
 class NewCard extends Component {
     componentWillMount() {
@@ -14,17 +13,21 @@ class NewCard extends Component {
             tasks: []
         });
     }
+
     handleChange(field, value) {
         this.setState({ [field]: value });
     }
+
     handleSubmit(e) {
         e.preventDefault();
-        this.props.cardCallbacks.addCard(this.state);
+        CardActionCreators.addCard(this.state);
         this.props.history.pushState(null, '/');
     }
+
     handleClose(e) {
         this.props.history.pushState(null, '/');
     }
+    
     render() {
         return (
             <CardForm draftCard={this.state}
