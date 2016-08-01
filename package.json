@@ -7,7 +7,7 @@
     "sass": "sass/**"
   },
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server",
+    "start": "node_modules/.bin/webpack-dev-server --progress",
     "build": "BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.production.js",
     "lint": "./node_modules/.bin/eslint .",
     "sass": "node-sass sass/ -o build/css/",
@@ -34,6 +34,7 @@
     "babel-runtime": "^6.3.19",
     "classnames": "^2.2.5",
     "express-favicon": "^1.0.1",
+    "flux": "^2.1.1",
     "history": "^3.0.0",
     "marked": "^0.3.5",
     "normalize.css": "^4.2.0",
