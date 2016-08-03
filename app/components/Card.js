@@ -55,12 +55,6 @@ let collectDrop = (connect, monitor) => {
 
 
 class Card extends Component {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      showDetails: false
-    };
-  }
 
   toggleDetails() {
     CardActionCreators.toggleCardDetails(this.props.id);
