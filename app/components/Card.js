@@ -63,14 +63,14 @@ class Card extends Component {
   }
 
   toggleDetails() {
-    this.setState({ showDetails: !this.state.showDetails });
+    CardActionCreators.toggleCardDetails(this.props.id);
   }
 
   render() {
     const { connectDragSource, connectDropTarget } = this.props;
 
     let cardDetails;
-    if (this.state.showDetails) {
+    if (this.state.showDetails !== false) {
       cardDetails = (
         <div className="card__details">
           <span dangerouslySetInnerHTML={{ __html: marked(this.props.description) }} />
@@ -98,7 +98,7 @@ class Card extends Component {
           <Link to={'/edit/' + this.props.id}>✎</Link>
         </div>
         <div className={
-          this.state.showDetails ? "card__title card__title--is-open" : "card__title"
+          this.state.showDetails !== false? "card__title card__title--is-open" : "card__title"
         } onClick={this.toggleDetails.bind(this) }>
           {this.props.title}
         </div>

@@ -38,6 +38,18 @@ class CardStore extends ReduceStore {
             case constants.CREATE_CARD_ERROR:
                 cardIndex = this.getCardIndex(action.payload.card.id);
                 return update(this.getState(), { $splice: [[cardIndex, 1]] });
+
+            /*
+            * Card Status Toggle
+            */
+            case constants.TOGGLE_CARD_DETAILS:
+                cardIndex = this.getCardIndex(action.payload.cardId);
+                return update(this.getState(), {
+                    [cardIndex]: {
+                        showDetails: { $apply: (currentValue) => (currentValue !== false) ? false : true }
+                    }
+                });
+
             /*
             * Card Update
             */
