@@ -64,7 +64,7 @@ class Card extends Component {
     const { connectDragSource, connectDropTarget } = this.props;
 
     let cardDetails;
-    if (this.state.showDetails !== false) {
+    if (this.props.showDetails === true) {
       cardDetails = (
         <div className="card__details">
           <span dangerouslySetInnerHTML={{ __html: marked(this.props.description) }} />
@@ -92,7 +92,7 @@ class Card extends Component {
           <Link to={'/edit/' + this.props.id}>✎</Link>
         </div>
         <div className={
-          this.state.showDetails !== false? "card__title card__title--is-open" : "card__title"
+          this.props.showDetails === true? "card__title card__title--is-open" : "card__title"
         } onClick={this.toggleDetails.bind(this) }>
           {this.props.title}
         </div>
